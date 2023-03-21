@@ -1,3 +1,10 @@
+### NOT WORKING :rotating_light: :rotating_light: :rotating_light:
+
+This example is not working and just here for illutrating issue https://github.com/nextauthjs/next-auth/issues/7015
+
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
