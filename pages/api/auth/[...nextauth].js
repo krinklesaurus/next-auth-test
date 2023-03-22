@@ -3,6 +3,27 @@ import GithubProvider from "next-auth/providers/github"
 import NextAuth from "next-auth"
 
 export const authOptions = {
+  callbacks: {
+    async session({ session, token, user }) {
+      console.log("session callback")
+      console.log("session: "+JSON.stringify(session))
+      console.log("token: "+JSON.stringify(token))
+      console.log("user: "+JSON.stringify(user))
+      return session // The return type will match the one returned in `useSession()`
+    },
+    async jwt({ token, account, profile }) {
+      console.log("jwt callback")
+      console.log("token: "+JSON.stringify(token))
+      console.log("account: "+JSON.stringify(account))
+      console.log("profile: "+JSON.stringify(profile))
+      // Persist the OAuth access_token and or the user id to the token right after signin
+      if (account) {
+        token.accessToken = account.access_token
+        token.id = "some-id"
+      }
+      return token
+    }
+  },
   // Configure one or more authentication providers
   providers: [
     CredentialsProvider({
